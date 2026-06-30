@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEHFM431B3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -160,9 +161,9 @@
 
         .text-panel h1 span { color: var(--brand-ice-cyan); }
 
-        /* --- PARAGRAPH FONT SIZING (INCREASED PER REQUEST) --- */
+        /* --- PARAGRAPH FONT SIZING --- */
         .narrative-flow-justified {
-            font-size: 22px; /* Increased from 18.5px */
+            font-size: 22px; 
             line-height: 1.8;
             color: var(--text-light-main); 
             text-align: justify;
@@ -178,7 +179,7 @@
         }
 
         .vision-mission-container h2 {
-            font-size: 52px; /* Matched Profile Heading size */
+            font-size: 52px; 
             font-weight: 900;
             margin-bottom: 30px;
             border-left: 8px solid var(--brand-ice-cyan);
@@ -306,7 +307,7 @@
         .matrix-desc {
             font-size: 17px;
             line-height: 1.75;
-            color: #E2E8F0; /* Changed from var(--text-light-muted) to high-contrast white-silver for enhanced visibility */
+            color: #E2E8F0; 
             text-align: justify;
         }
 
@@ -419,13 +420,86 @@
             font-size: 14px;
         }
 
+        /* 📱 --- MOBILE AUTOMATIC VIEW REPAIR MATRIX --- */
         @media (max-width: 992px) {
-            .matrix-grid { grid-template-columns: 1fr; }
-            .content-wrapper { grid-template-columns: 1fr; gap: 40px; }
-            .graphic-panel { height: 400px; position: static; }
-            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .hero-section { background-image: none; background-color: var(--page-bg-dark); padding-top: 140px; }
-            .brochure-section { justify-content: center; padding-bottom: 60px; }
+            header {
+                position: relative;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 18px;
+            }
+            nav ul li a {
+                padding: 10px 4px;
+                font-size: 14px;
+            }
+            .dropdown-menu {
+                position: static;
+                min-width: 100%;
+                box-shadow: none;
+            }
+            .hero-section {
+                background-image: none;
+                background-color: var(--page-bg-dark);
+                padding-top: 30px;
+            }
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .text-panel h1, .capabilities-section h2, .vision-mission-container h2 {
+                font-size: 32px;
+            }
+            .narrative-flow-justified {
+                font-size: 17px;
+                text-align: left;
+            }
+            .graphic-panel {
+                height: 350px;
+                position: static;
+            }
+            .matrix-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .matrix-card {
+                padding: 30px 20px;
+            }
+            .matrix-desc {
+                font-size: 15px;
+                text-align: left;
+            }
+            .brochure-section {
+                justify-content: center;
+                padding-bottom: 60px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                gap: 8px 12px;
+            }
+            nav ul li a {
+                font-size: 12px;
+            }
+            .graphic-panel {
+                height: 250px;
+            }
         }
     </style>
 </head>

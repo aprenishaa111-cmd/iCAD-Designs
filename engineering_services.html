@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEHFM431B3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-SEHFM431B3');
-</script>
+      gtag('config', 'G-SEHFM431B3');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engineering Services - iCAD DESIGNS</title>
@@ -26,7 +26,7 @@
             --footer-dark-pure: #06101E;   
             --text-dark-nav: #0B192C;      
             --text-light-main: #FFFFFF;    
-            --text-light-muted: #94A3B8;   
+            --text-light-muted: #CBD5E1;   
             --brand-primary: #0052CC;      
             --brand-ice-cyan: #00E5FF;     
             --border-clean: #1E293B;
@@ -59,37 +59,58 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
+            padding: 12px 24px;
+            position: relative;
         }
 
         .logo-container img {
-            height: 85px;
+            height: 75px;
             width: auto;
             display: block;
+            transition: transform 0.3s ease;
+        }
+
+        /* Menu Toggle Button for Mobile */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1010;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--text-dark-nav);
+            transition: all 0.3s ease;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 36px;
+            gap: 32px;
             align-items: center;
         }
 
         nav ul li a {
             text-decoration: none;
             color: var(--text-dark-nav);
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            padding: 10px 4px;
+            padding: 25px 4px;
             display: block;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: color 0.3s ease;
         }
 
         nav ul li a:hover { 
             color: var(--brand-primary); 
-            transform: translateY(-2px);
         }
 
         .dropdown { position: relative; }
@@ -99,45 +120,40 @@
             top: 100%;
             left: 0;
             background-color: var(--header-white);
-            min-width: 290px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            min-width: 300px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             border-top: 4px solid var(--brand-primary);
             border-radius: 0 0 8px 8px;
             list-style: none;
             padding: 12px 0;
-            opacity: 0;
-            transform: translateY(15px);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1005;
         }
 
         .dropdown-menu li a {
-            padding: 12px 20px;
+            padding: 14px 24px;
             text-transform: none;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-dark-nav);
             display: block;
-            transition: all 0.2s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .dropdown-menu li a:hover {
             background-color: #F1F5F9;
-            color: var(--brand-primary);
-            padding-left: 25px;
+            color: var(--brand-primary) !important;
         }
 
         .dropdown:hover .dropdown-menu { 
             display: block; 
-            opacity: 1;
-            transform: translateY(0);
         }
 
         /* --- LANDSCAPE MP4 VIDEO BANNER BLOCK --- */
         .top-landscape-banner {
-            margin-top: 121px; /* Navbar spacing */
+            margin-top: 103px; /* Header spacing sync */
             position: relative;
             width: 100%;
-            height: 380px; /* Precise height alignment */
+            height: 380px; 
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -154,7 +170,6 @@
             z-index: 1;
         }
 
-        /* Dark overlay over the video for layout consistency */
         .top-landscape-banner::after {
             content: '';
             position: absolute;
@@ -162,7 +177,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(11, 25, 44, 0.65);
             z-index: 2;
         }
 
@@ -170,7 +185,7 @@
         .content-wrapper-frame {
             max-width: 1200px;
             width: 100%;
-            margin: 50px auto 100px auto; /* Banner ku keezh amayum gap */
+            margin: 60px auto 100px auto;
             padding: 0 24px;
             flex-grow: 1;
         }
@@ -180,12 +195,13 @@
         }
 
         .hero-heading-block h1 {
-            font-size: 52px;
+            font-size: 46px;
             font-weight: 900;
             text-transform: uppercase;
             border-left: 6px solid var(--brand-ice-cyan);
             padding-left: 18px;
             margin-bottom: 40px;
+            letter-spacing: 0.5px;
         }
 
         .hero-heading-block h1 span { color: var(--brand-ice-cyan); }
@@ -221,7 +237,16 @@
             align-items: center;
             gap: 16px;
             transition: all 0.3s ease;
-            cursor: pointer;
+        }
+
+        .services-grid-list li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            width: 100%;
+            transition: color 0.3s ease;
         }
 
         .services-grid-list li::before {
@@ -237,6 +262,10 @@
             transform: translateX(8px);
         }
 
+        .services-grid-list li:hover a {
+            color: var(--brand-ice-cyan);
+        }
+
         .services-grid-list li:hover::before {
             transform: scale(1.2) rotate(15deg);
         }
@@ -245,17 +274,18 @@
         footer {
             background-color: var(--footer-dark-pure);
             color: var(--text-light-muted);
-            padding: 80px 24px 30px 24px;
+            padding: 60px 24px 0px 24px;
             border-top: 4px solid var(--brand-ice-cyan);
             margin-top: auto;
         }
 
         .footer-max-bound {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr 1fr;
+            grid-template-columns: 2fr 1fr 1.2fr;
             gap: 50px;
+            padding-bottom: 40px;
         }
 
         .footer-col h3 {
@@ -263,91 +293,140 @@
             color: #FFFFFF;
             font-weight: 800;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             letter-spacing: 0.5px;
-            position: relative;
-        }
-
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 30px;
-            height: 2px;
-            background-color: var(--brand-ice-cyan);
+            border-bottom: 2px solid var(--brand-ice-cyan);
+            display: inline-block;
+            padding-bottom: 4px;
         }
 
         .footer-logo-box img {
-            height: 65px;
-            width: auto;
+            height: 55px;
             background: #FFFFFF;
-            padding: 5px;
+            padding: 5px 12px;
             border-radius: 6px;
-            margin-bottom: 18px;
-            display: block;
+            width: auto;
+            margin-bottom: 15px;
+            display: inline-block;
         }
 
         .footer-col p {
-            font-size: 15px;
+            font-size: 16px;
             line-height: 1.6;
-            color: var(--text-light-muted);
+            color: #CBD5E1;
         }
 
         .footer-links-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
         }
 
         .footer-links-list li a {
-            color: var(--text-light-muted);
+            color: #CBD5E1;
             text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            transition: all 0.2s ease;
+            font-size: 14px;
+            transition: color 0.2s ease, padding-left: 0.2s ease;
         }
 
         .footer-links-list li a:hover { 
             color: var(--brand-ice-cyan); 
-            padding-left: 5px;
+            padding-left: 4px;
         }
 
         .footer-base-bar {
-            max-width: 1200px;
-            margin: 50px auto 0 auto;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-clean);
-            font-size: 14px;
+            max-width: 1300px;
+            margin: 0 auto;
+            border-top: 1px solid #1E293B;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #94A3B8;
         }
 
         /* --- CSS KEYFRAME ANIMATIONS --- */
         @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @media (max-width: 900px) {
-            .top-landscape-banner { margin-top: 121px; height: 260px; }
-            .footer-max-bound { grid-template-columns: 1fr; gap: 35px; }
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 950px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--header-white);
+                padding: 20px;
+                gap: 15px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                border-bottom: 3px solid var(--brand-primary);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: left;
+            }
+
+            nav ul li a {
+                padding: 10px 0;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border-top: none;
+                padding-left: 15px;
+                background: #F8FAFC;
+                display: block; /* Mobile view-la static menu clear-ah theriyum */
+            }
+
+            .top-landscape-banner { 
+                margin-top: 103px; 
+                height: 240px; 
+            }
+
+            .hero-heading-block h1 {
+                font-size: 32px;
+            }
+
+            .services-list-container {
+                padding: 24px;
+            }
+
+            .services-grid-list li {
+                font-size: 16px;
+            }
+
+            .footer-max-bound { 
+                grid-template-columns: 1fr; 
+                gap: 35px; 
+            }
+            
+            .footer-base-bar { 
+                flex-direction: column; 
+                gap: 10px; 
+                text-align: center; 
+            }
         }
     </style>
 </head>
@@ -358,19 +437,26 @@
             <a href="index.html" class="logo-container">
                 <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
             </a>
+            
+            <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <nav>
-                <ul>
+                <ul id="nav-list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="company.html">Company</a></li>
                     <li class="dropdown">
-                        <a href="#" style="color: var(--brand-primary)">Services <span>▼</span></a>
+                        <a href="engineering_services.html" style="color: var(--brand-primary)">Services ▼</a>
                         <ul class="dropdown-menu">
                             <li><a href="engineering_services.html">Engineering Services</a></li>
                             <li><a href="services.html">Library Design Services</a></li>
-                            <li><a href="services.html">PCB Design Services</a></li>
-                            <li><a href="services.html">Signal Integrity Services</a></li>
-                            <li><a href="services.html">Embedded Services</a></li>
-                            <li><a href="services.html">PCB Manufacturing & Assembly Support</a></li>
+                            <li><a href="pcb_design_services.html">PCB Design Services</a></li>
+                            <li><a href="signal_integrity_services.html">Signal Integrity Services</a></li>
+                            <li><a href="embedded_services.html">Embedded Services</a></li>
+                            <li><a href="pcb_manufacturing_services.html">PCB Manufacturing & Assembly Support</a></li>
                         </ul>
                     </li>
                     <li><a href="products.html">Products</a></li>
@@ -393,17 +479,17 @@
         
         <div class="services-list-container">
             <ul class="services-grid-list">
-                <li>Library Development</li>
+                <li><a href="services.html">Library Development</a></li>
                 <li>Schematic Development</li>
-                <li>PCB Design services – ( High speed PCB design , RF , Power supply , Mixed signal)</li>
+                <li><a href="pcb_design_services.html">PCB Design services – ( High speed PCB design , RF , Power supply , Mixed signal)</a></li>
                 <li>ATE Board Design</li>
                 <li>Onsite PCB Design Contractors</li>
                 <li>Off site design service as per the complexity of the board</li>
                 <li>DFx Services</li>
-                <li>PCB Manufacture and Assembly</li>
-                <li>Signal Integrity support</li>
+                <li><a href="pcb_manufacturing_services.html">PCB Manufacture and Assembly</a></li>
+                <li><a href="signal_integrity_services.html">Signal Integrity support</a></li>
                 <li>Reverse Engineering</li>
-                <li>Embedded design Services</li>
+                <li><a href="embedded_services.html">Embedded design Services</a></li>
             </ul>
         </div>
     </main>
@@ -428,15 +514,24 @@
             </div>
             <div class="footer-col">
                 <h3>Corporate Office</h3>
-                <p style="color: var(--text-light-muted); font-weight: 600; line-height: 1.6;">
-                    📍 Door No 4/266, Thangavel Street, NGGO colony,<br>Coimbatore - 641022
+                <p style="color: #CBD5E1; font-weight: 600; line-height: 1.6; font-size: 16px;">
+                    📍 Door No 4/266, Thangavel Street, NGGO colony, Coimbatore - 641022
                 </p>
             </div>
         </div>
         <div class="footer-base-bar">
-            <span>© 2026 iCAD DESIGNS. All rights reserved.</span>
+            <div>© 2026 iCAD DESIGNS. All rights reserved.</div>
+            <div>vivek@icaddesigns.com</div>
         </div>
     </footer>
 
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navList = document.getElementById('nav-list');
+
+        menuBtn.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

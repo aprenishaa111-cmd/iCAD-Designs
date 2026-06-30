@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEHFM431B3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-SEHFM431B3');
-</script>
+      gtag('config', 'G-SEHFM431B3');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Embedded Services - iCAD DESIGNS</title>
@@ -26,7 +26,7 @@
             --footer-dark-pure: #06101E;   
             --text-dark-nav: #0B192C;      
             --text-light-main: #FFFFFF;    
-            --text-light-muted: #94A3B8;   
+            --text-light-muted: #CBD5E1;   
             --brand-primary: #0052CC;      
             --brand-ice-cyan: #00E5FF;     
             --card-glass-dark: #15253F;    
@@ -121,8 +121,10 @@
             color: var(--brand-primary);
         }
 
-        /* FIXED CSS DROPDOWN HOVER LOGIC */
-        .dropdown { position: relative; }
+        .dropdown { 
+            position: relative; 
+        }
+        
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -160,7 +162,7 @@
             color: var(--brand-primary) !important;
         }
 
-        /* --- HERO AREA (MODIFIED FOR SIDE-BY-SIDE LAYOUT) --- */
+        /* --- HERO AREA --- */
         .hero-section {
             padding: 200px 24px 60px 24px;
             display: flex;
@@ -194,43 +196,40 @@
 
         .text-panel h1 span { color: var(--brand-ice-cyan); }
 
-        .narrative-flow-justified {
+        .narrative-flow-left {
             font-size: 21px;
             line-height: 1.8;
             color: #E2E8F0;
-            text-align: justify;
+            text-align: left;
             transition: color 0.3s ease;
         }
 
-        .narrative-flow-justified p {
+        .narrative-flow-left p {
             margin-bottom: 15px;
         }
 
-        /* HERO IMAGE CONTAINER WITH SHARP OUTLINE TRANSITION */
         .hero-image-container {
-    position: relative;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    outline: 2px solid rgba(0, 229, 255, 0.2);
-    outline-offset: 0px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* --- INGE KEEZHE ULLA RENDU LINES-AH MATTUM REPLCAE OR ADD PANNUNGA --- */
-    width: 100%;
-    max-width: 450px; /* Ella page-lum image-oda agalam (width) idhudhaan */
-    justify-self: center;
-}
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            outline: 2px solid rgba(0, 229, 255, 0.2);
+            outline-offset: 0px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            max-width: 450px;
+            justify-self: center;
+        }
 
         .hero-image-container img {
             width: 100%;
-            height: auto;
+            height: 320px;
+            object-fit: cover;
             display: block;
             border-radius: 12px;
             transition: transform 0.5s ease;
         }
 
-        /* Image Container Hover Animation System */
         .hero-image-container:hover {
             transform: translateY(-5px);
             outline: 3px solid var(--brand-ice-cyan);
@@ -288,17 +287,25 @@
         }
 
         .spec-card-icon {
-            font-size: 22px;
-            color: var(--brand-ice-cyan);
-            background: rgba(0, 229, 255, 0.1);
             width: 45px;
             height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: rgba(0, 229, 255, 0.1);
             border-radius: 50%;
             flex-shrink: 0;
             transition: transform 0.3s ease;
+        }
+
+        .spec-card-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: var(--brand-ice-cyan);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
 
         .spec-card:hover .spec-card-icon {
@@ -348,7 +355,7 @@
         .footer-grid p {
             font-size: 16px;
             line-height: 1.6;
-            color: #A0AEC0;
+            color: #CBD5E1;
         }
 
         .footer-section-title {
@@ -366,7 +373,7 @@
         .footer-links ul { list-style: none; }
         .footer-links ul li { margin-bottom: 8px; }
         .footer-links ul li a {
-            color: #A0AEC0;
+            color: #CBD5E1;
             text-decoration: none;
             font-size: 14px;
             transition: color 0.2s ease, padding-left: 0.2s ease;
@@ -385,7 +392,7 @@
             justify-content: space-between;
             align-items: center;
             font-size: 13px;
-            color: #64748B;
+            color: #94A3B8;
         }
 
         @media (max-width: 900px) {
@@ -409,7 +416,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="company.html">Company</a></li>
                     <li class="dropdown">
-                        <a href="javascript:void(0);" style="color: var(--brand-primary)">Services <span>▼</span></a>
+                        <a href="engineering_services.html" style="color: var(--brand-primary)">Services <span>▼</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="engineering_services.html">Engineering Services</a></li>
                             <li><a href="services.html">Library Design Services</a></li>
@@ -431,9 +438,9 @@
             <div class="content-wrapper">
                 <div class="text-panel">
                     <h1>Embedded <span>Services</span></h1>
-                    <div class="narrative-flow-justified">
-                        <p>We are offering design and development services including a complete spectrum of product development like Microcontroller based product development, New Ideas, initiating the product to prototype making, testing, and manufacturing.
-                        The company is professionally managed and supported by qualified experienced specialists and consultants with experience in embedded systems including hardware and software.</p>
+                    <div class="narrative-flow-left">
+                        <p>We are offering design and development services including a complete spectrum of product development like Microcontroller based product development, New Ideas, initiating the product to prototype making, testing, and manufacturing.</p>
+                        <p>The company is professionally managed and supported by qualified experienced specialists and consultants with experience in embedded systems including hardware and software.</p>
                     </div>
                 </div>
                 <div class="hero-image-container">
@@ -446,27 +453,39 @@
             <h2>CAPABILITIES & <span>FEATURES</span></h2>
             <div class="spec-grid">
                 <div class="spec-card">
-                    <div class="spec-card-icon">⚙️</div>
+                    <div class="spec-card-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    </div>
                     <div class="spec-card-text">Microcontroller based product design and engineering flow.</div>
                 </div>
                 <div class="spec-card">
-                    <div class="spec-card-icon">💡</div>
+                    <div class="spec-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 21h6M9 18h6M10 22h4M12 2v1M4.22 4.22l.71.71M1 12h1M22 12h1M19.07 4.22l-.71.71"></path><path d="M12 3a9 9 0 0 0-6 15.66L7 21h10l1-2.34A9 9 0 0 0 12 3z"></path></svg>
+                    </div>
                     <div class="spec-card-text">Transforming raw concept ideas into functional industrial models.</div>
                 </div>
                 <div class="spec-card">
-                    <div class="spec-card-icon">🔬</div>
+                    <div class="spec-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m-3-3h6"/></svg>
+                    </div>
                     <div class="spec-card-text">State-of-the-art product layout architectures and optimization.</div>
                 </div>
                 <div class="spec-card">
-                    <div class="spec-card-icon">🛠️</div>
+                    <div class="spec-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                    </div>
                     <div class="spec-card-text">End-to-end hardware prototype making, testing, and system evaluation.</div>
                 </div>
                 <div class="spec-card">
-                    <div class="spec-card-icon">📡</div>
+                    <div class="spec-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 5a5 5 0 0 0-5 5c0 2.76 2.24 5 5 5s5-2.24 5-5a5 5 0 0 0-5-5z"></path></svg>
+                    </div>
                     <div class="spec-card-text">Provides system-level customized manufacturing solutions.</div>
                 </div>
                 <div class="spec-card">
-                    <div class="spec-card-icon">🔌</div>
+                    <div class="spec-card-icon">
+                        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    </div>
                     <div class="spec-card-text">Comprehensive validation schemes spanning firmware and physical modules.</div>
                 </div>
             </div>
