@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SEHFM431B3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SEHFM431B3');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - iCAD DESIGNS</title>
+    <style>
+        /* --- RESET & MASTER VARIABLE SETS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --page-bg-dark: #0B192C;       
+            --header-white: #FFFFFF;
+            --footer-dark-pure: #06101E;   
+            --text-dark-nav: #0B192C;      
+            --text-light-main: #FFFFFF;    
+            --text-light-muted: #94A3B8;   
+            --brand-primary: #0052CC;      
+            --brand-ice-cyan: #00E5FF;     
+            --card-glass-dark: #15253F;    
+            --border-clean: #1E293B;
+        }
+
+        body {
+            background-color: var(--page-bg-dark);
+            color: var(--text-light-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* --- FIXED NAVIGATION BAR --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--header-white);
+            border-bottom: 4px solid var(--brand-primary);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+        }
+
+        .logo-container img {
+            height: 75px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark-nav);
+            font-size: 16px; 
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 25px 4px;
+            display: block;
+            transition: color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        nav ul li a:hover { color: var(--brand-primary); }
+
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--header-white);
+            min-width: 290px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-top: 4px solid var(--brand-primary);
+            border-radius: 0 0 8px 8px;
+            list-style: none;
+            padding: 12px 0;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .dropdown-menu li a {
+            padding: 12px 20px;
+            text-transform: none;
+            font-weight: 700;
+            font-size: 15px; 
+            color: var(--text-dark-nav);
+            display: block;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #F1F5F9;
+            color: var(--brand-primary);
+        }
+
+        .dropdown:hover .dropdown-menu { 
+            display: block; 
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- HERO TITLE AREA --- */
+        .hero-section {
+            padding: 180px 24px 20px 24px;
+            max-width: 1250px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-section h1 {
+            font-size: 58px; 
+            font-weight: 900;
+            text-transform: uppercase;
+            border-left: 8px solid var(--brand-ice-cyan);
+            padding-left: 20px;
+            letter-spacing: -0.5px;
+            animation: fadeInHeading 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        }
+
+        .hero-section h1 span { color: var(--brand-ice-cyan); }
+
+        /* --- PRODUCT CONTAINER LIST ARCHITECTURE --- */
+        .products-wrapper {
+            max-width: 1250px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 20px 24px 100px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: start;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUpRows 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        }
+
+        .product-container:nth-child(1) { animation-delay: 0.15s; }
+        .product-container:nth-child(2) { animation-delay: 0.3s; }
+        .product-container:nth-child(3) { animation-delay: 0.45s; }
+        .product-container:nth-child(4) { animation-delay: 0.6s; }
+        .product-container:nth-child(5) { animation-delay: 0.75s; }
+        .product-container:nth-child(6) { animation-delay: 0.9s; }
+        .product-container:nth-child(7) { animation-delay: 1.05s; }
+
+        .product-container:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        /* Left Side: Product Media Layout */
+        .product-media-panel {
+            position: sticky;
+            top: 140px;
+        }
+
+        .main-product-frame {
+            width: 100%;
+            height: 420px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 3px solid var(--brand-ice-cyan);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.25);
+            background: #101F35;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .main-product-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            padding: 15px;
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Interactive Micro-Interactions on Hover */
+        .product-container:hover .main-product-frame {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 15px 40px rgba(0, 229, 255, 0.4);
+        }
+
+        .product-container:hover .main-product-frame img {
+            transform: scale(1.03);
+        }
+
+        /* Right Side: Product Details */
+        .product-details-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .product-title {
+            font-size: 42px; 
+            font-weight: 900;
+            color: #FFFFFF;
+            line-height: 1.2;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .product-container:hover .product-title {
+            color: var(--brand-ice-cyan);
+        }
+
+        .product-description {
+            font-size: 20px; 
+            line-height: 1.8;
+            color: #E2E8F0;
+            text-align: justify;
+        }
+
+        .features-box {
+            background: var(--card-glass-dark);
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .product-container:hover .features-box {
+            border-color: rgba(0, 229, 255, 0.4);
+            box-shadow: 0 15px 35px rgba(6, 16, 30, 0.5);
+        }
+
+        .features-box h3 {
+            font-size: 23px; 
+            font-weight: 800;
+            color: var(--brand-ice-cyan);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .features-list li {
+            font-size: 18px; 
+            line-height: 1.6;
+            color: var(--text-light-main);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            transition: transform 0.25s ease;
+        }
+
+        .features-list li:hover {
+            transform: translateX(4px);
+        }
+
+        .features-list li::before {
+            content: "⚡";
+            color: var(--brand-ice-cyan);
+            font-size: 16px; 
+            margin-top: 2px;
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .features-list li:hover::before {
+            transform: scale(1.2);
+        }
+
+        /* --- ALIGNED SPECIFICATION COLUMN LAYOUT --- */
+        .features-list.spec-list li {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .spec-label {
+            width: 230px;
+            font-weight: 700;
+            color: #FFFFFF;
+            flex-shrink: 0;
+        }
+
+        .spec-colon {
+            width: 25px;
+            font-weight: 700;
+            color: var(--brand-ice-cyan);
+            flex-shrink: 0;
+            text-align: center;
+        }
+
+        .spec-value {
+            flex-grow: 1;
+        }
+
+        /* --- FOOTER REGION --- */
+        footer {
+            background-color: var(--footer-dark-pure);
+            color: var(--text-light-muted);
+            padding: 70px 24px 30px 24px;
+            border-top: 4px solid var(--brand-ice-cyan);
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            max-width: 1250px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr 1fr;
+            gap: 50px;
+            padding-bottom: 30px;
+        }
+
+        .footer-logo-wrapper {
+            background: #FFFFFF;
+            padding: 8px 16px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-wrapper img { height: 55px; width: auto; }
+
+        .footer-section-title {
+            color: #FFFFFF;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 17px; 
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 30px;
+            height: 3px;
+            background-color: var(--brand-ice-cyan);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links ul li a {
+            color: var(--text-light-muted);
+            text-decoration: none;
+            font-size: 17px; 
+            font-weight: 600;
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+            display: inline-block;
+        }
+
+        .footer-links ul li a:hover { color: #FFFFFF; transform: translateX(6px); }
+
+        .footer-grid p {
+            font-size: 16px; 
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            max-width: 1250px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border-clean);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px; 
+        }
+
+        /* --- STYLISH CSS KEYFRAME ANIMATIONS --- */
+        @keyframes fadeInHeading {
+            0% { opacity: 0; transform: translateX(-20px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Updated multi-row stagger rules */
+        @keyframes slideUpRows {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 900px) {
+            .product-container { grid-template-columns: 1fr; gap: 40px; }
+            .product-media-panel { position: static; }
+            .hero-section { padding-top: 140px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .features-list.spec-list li { flex-direction: column; gap: 4px; }
+            .spec-colon { text-align: left; width: auto; }
+            .spec-colon::before { content: " "; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li class="dropdown">
+                        <a href="#">Services <span>▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="engineering_services.html">Engineering Services</a></li>
+                            <li><a href="services.html">Library Design Services</a></li>
+                            <li><a href="services.html">PCB Design Services</a></li>
+                            <li><a href="services.html">Signal Integrity Services</a></li>
+                            <li><a href="embedded_services.html">Embedded Services</a></li>
+                            <li><a href="services.html">PCB Manufacturing & Assembly Support</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="products.html" style="color: var(--brand-primary);">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <h1>Our <span>Products</span></h1>
+    </section>
+
+    <main class="products-wrapper">
+        
+        <div class="product-container">
+            <div class="product-media-panel">
+                <div class="main-product-frame">
+                    <img src="sieger_pcb.jpg" alt="SIEGER P32-ETH-V1.01 PCB">
+                </div>
+            </div>
+
+            <div class="product-details-panel">
+                <h2 class="product-title">SIEGER P32-ETH-V1.01 Controller Board</h2>
+                
+                <p class="product-description">
+                    High-performance Ethernet-ready system controller board meticulously architected for seamless network processing, robust multi-layer signal fidelity configurations, and industrial-grade connectivity automation deployment requirements.
+                </p>
+
+                <div class="features-box">
+                    <h3>Technical Specifications</h3>
+                    <ul class="features-list">
+                        <li>Advanced Ethernet Module integration infrastructure for ultra-stable remote operations.</li>
+                        <li>Optimized high-speed component tracing configurations reducing parasitic impedance issues.</li>
+                        <li>Built-in multi-channel signaling diagnostics networks matching rigid SIC validation checkpoints.</li>
+                        <li>Compact industrial layout form factor ensuring seamless system retrofitting deployments.</li>
+                        <li>Precision-engineered power regulation plane modules matching strict field bus parameters.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-container">
+            <div class="product-media-panel">
+                <div class="main-product-frame">
+                    <img src="PCB_board.jpg" alt="iCAD Industrial Custom Embedded PCB Workstation">
+                </div>
+            </div>
+
+            <div class="product-details-panel">
+                <h2 class="product-title">iCAD Multi-Purpose Industrial Workstation Board</h2>
+                
+                <p class="product-description">
+                    An advanced multi-layer industrial evaluation workspace motherboard optimized for complex system hardware prototyping, embedded firmware benchmarking integration, and rigid concept-to-prototype validation procedures.
+                </p>
+
+                <div class="features-box">
+                    <h3>System Architecture</h3>
+                    <ul class="features-list">
+                        <li>High-speed microprocessing multi-lane architecture setup for quick layout benchmark tests.</li>
+                        <li>Dual-Channel Isolated CAN interface links protecting core processing pathways.</li>
+                        <li>Integrated RS485 and RS232 tracking modules for stable industrial system telemetry.</li>
+                        <li>Onboard robust 12V / 24V clean power supply conversion rail modules.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-container">
+            <div class="product-media-panel">
+                <div class="main-product-frame">
+                    <img src="image.jpg" alt="High-Speed Signal Emulator Module">
+                </div>
+            </div>
+
+            <div class="product-details-panel">
+                <h2 class="product-title">High-Speed Signal Emulator Module</h2>
+                
+                <p class="product-description">
+                    Advanced engineering hardware profile designed for rigorous signal validation setups. Engineered to handle multiple differential network arrays while matching ultra-tight high-frequency timing compliance windows.
+                </p>
+
+                <div class="features-box">
+                    <h3>Technical Board Specifications</h3>
+                    <ul class="features-list spec-list">
+                        <li>
+                            <span class="spec-label">Application Environment</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Tailored specifically for high-frequency PCI Express processing structures.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Supported Protocols</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Cross-functional validation support for PCI, SAS, and DDR2 architectures.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Layer Stack Configuration</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Heavyweight, complex 12-Layer architecture design for signal protection.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Physical Board Dimensions</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Ultra-dense layout compressed neatly into a 6.6″ x 2.53″ footprint envelope.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-container">
+            <div class="product-media-panel">
+                <div class="main-product-frame">
+                    <img src="image2.jpg" alt="High Density Camera IOB Interface Board">
+                </div>
+            </div>
+
+            <div class="product-details-panel">
+                <h2 class="product-title">High Density Camera IOB Interface Board</h2>
+                
+                <p class="product-description">
+                    Ultra-high layer count infrastructure engineered for high-bandwidth imaging setups. Built with complex high-density routing and stacked microvia configurations to achieve seamless parallel processing matrix links.
+                </p>
+
+                <div class="features-box">
+                    <h3>Technical Board Specifications</h3>
+                    <ul class="features-list spec-list">
+                        <li>
+                            <span class="spec-label">Application Environment</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Camera, IOB Board structures.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Supported Protocols</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Integrated processing support for XAUI, DDR3, PCIe, oMAP, and SATA layouts.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Layer Stack Configuration</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Extremely complex 24-Layer architecture designed for maximum isolation performance.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Physical Board Dimensions</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Highly optimized custom layout footprints measuring 3.2″ x 2.93″.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Engineering Challenges</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Precision HDI configurations with fine 0.6 mm and 0.5 mm pitch components using specialized Stacked Vias.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-container">
+            <div class="product-media-panel">
+                <div class="main-product-frame">
+                    <img src="image3.jpg" alt="High Density Camera ISB Interface Board">
+                </div>
+            </div>
+
+            <div class="product-details-panel">
+                <h2 class="product-title">High Density Camera ISB Interface Board</h2>
+                
+                <p class="product-description">
+                    Ultra-high layer count infrastructure engineered for extreme performance high-bandwidth imaging setups. Built with high-density tracking matrices and custom-stacked microvia routing structures to achieve optimized system interface performance.
+                </p>
+
+                <div class="features-box">
+                    <h3>Technical Board Specifications</h3>
+                    <ul class="features-list spec-list">
+                        <li>
+                            <span class="spec-label">Application Environment</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Camera, ISB Board structures.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Supported Protocols</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Integrated processing support for XAUI, DDR3, PCIe, oMAP, and SATA layouts.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Layer Stack Configuration</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Extremely complex 24-Layer architecture designed for maximum isolation performance.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Physical Board Dimensions</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Highly optimized custom layout footprints measuring 3.4″ x 3.15″.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Engineering Challenges</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Precision HDI configurations with fine 0.6 mm and 0.5 mm pitch components using specialized Stacked Vias.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-container">
+            <div class="product-media-panel">
+                <div class="main-product-frame">
+                    <img src="image4.jpg" alt="High-Speed Processing & Memory Array Board">
+                </div>
+            </div>
+
+            <div class="product-details-panel">
+                <h2 class="product-title">High-Speed Processing & Memory Array Board</h2>
+                
+                <p class="product-description">
+                    Next-generation high-speed compute node interface framework engineered for intense data pipeline computing applications. Featuring length-matched differential routing to guarantee uniform trace delays across extreme memory capacities.
+                </p>
+
+                <div class="features-box">
+                    <h3>Technical Board Specifications</h3>
+                    <ul class="features-list spec-list">
+                        <li>
+                            <span class="spec-label">Application Environment</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">High-performance enterprise data compute & storage systems.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Supported Protocols</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Comprehensive routing capabilities matching DDR4, DDR5, NVMe, and PCIe Gen 5 topologies.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Layer Stack Configuration</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Rigid 16-Layer balanced geometry designed to suppress inter-layer signal crosstalk.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Physical Board Dimensions</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Form-factor optimized custom footprint envelope measuring 4.5″ x 3.82″.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Engineering Challenges</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Strict propagation delay matching constraints alongside automated impedance control validation matrices.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-container">
+            <div class="product-media-panel">
+                <div class="main-product-frame">
+                    <img src="image5.jpg" alt="Multichannel Industrial Data Acquisition Board">
+                </div>
+            </div>
+
+            <div class="product-details-panel">
+                <h2 class="product-title">Multichannel Industrial Data Acquisition Board</h2>
+                
+                <p class="product-description">
+                    Advanced high-density synchronous data acquisition framework designed for real-time telemetry monitoring, high-accuracy sensor matrix interfacing, and robust signal isolation across complex industrial automated environments.
+                </p>
+
+                <div class="features-box">
+                    <h3>Technical Board Specifications</h3>
+                    <ul class="features-list spec-list">
+                        <li>
+                            <span class="spec-label">Application Environment</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">High-precision industrial monitoring and automated telemetry systems.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Supported Protocols</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Simultaneous multi-channel support for SPI, I2C, Modbus, and EtherCAT interfaces.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Layer Stack Configuration</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">High-performance 10-Layer configuration with optimized ground return planes.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Physical Board Dimensions</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Compact and ultra-dense profile measuring 5.2″ x 3.10″.</span>
+                        </li>
+                        <li>
+                            <span class="spec-label">Engineering Challenges</span>
+                            <span class="spec-colon">:</span>
+                            <span class="spec-value">Achieving low-noise analog-to-digital isolation alongside fine-pitch surface mount component alignment.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo-wrapper">
+                    <img src="1781762786642_image.png" alt="iCAD Designs Footer Logo">
+                </div>
+                <p>Delivering high-performance electronics layout validation, signal integration architecture, and global industrial standard hardware processing.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-section-title">Explore Links</div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="engineering_services.html">Services</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>   
+            </div>
+            
+            <div>
+                <div class="footer-section-title">Corporate Office</div>
+                <p style="font-size: 16px; margin-top: 10px; line-height: 1.6;">
+                    📍 Door No 4/266, Thangavel Street, NGGO colony, Near TNEB Office, Coimbatore - 641022
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 iCAD DESIGNS. All rights reserved.</div>
+            <div>vivek@icaddesigns.com</div>
+        </div>
+    </footer>
+
+</body>
+</html>

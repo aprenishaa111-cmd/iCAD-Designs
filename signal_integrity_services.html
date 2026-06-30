@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEHFM431B3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SEHFM431B3');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signal Integrity Services - iCAD DESIGNS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --page-bg-dark: #0B192C;       
+            --header-white: #FFFFFF;
+            --footer-dark-pure: #06101E;   
+            --text-dark-nav: #0B192C;      
+            --text-light-main: #FFFFFF;    
+            --text-light-muted: #94A3B8;   
+            --brand-primary: #0052CC;      
+            --brand-ice-cyan: #00E5FF;     
+            --card-glass-dark: #15253F;    
+            --border-clean: #1E293B;
+        }
+
+        body {
+            background-color: var(--page-bg-dark);
+            color: var(--text-light-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- TOP STICKY NAVBAR --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--header-white);
+            border-bottom: 4px solid var(--brand-primary);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+        }
+
+        .logo-container img {
+            height: 75px;
+            width: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark-nav);
+            font-size: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 25px 4px;
+            display: block;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--brand-primary);
+        }
+
+        /* FIXED CSS DROPDOWN HOVER LOGIC */
+        .dropdown { 
+            position: relative; 
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--header-white);
+            min-width: 300px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border-top: 4px solid var(--brand-primary);
+            border-radius: 0 0 8px 8px;
+            list-style: none;
+            padding: 12px 0;
+            z-index: 1005;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-menu { 
+            display: block !important; 
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            padding: 14px 24px;
+            text-transform: none;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-dark-nav);
+            display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #F1F5F9;
+            color: var(--brand-primary) !important;
+        }
+
+        /* --- HERO AREA (MODIFIED FOR SIDE-BY-SIDE LAYOUT) --- */
+        .hero-section {
+            padding: 200px 24px 60px 24px;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-clean);
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr; /* Splits layout into text and image columns */
+            gap: 40px;
+            align-items: center;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        /* Unified Headings Font Style */
+        .text-panel h1, .spec-section h2 {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-left: 6px solid var(--brand-ice-cyan);
+            padding-left: 18px;
+            letter-spacing: 0.5px;
+        }
+
+        .text-panel h1 {
+            font-size: 46px;
+            margin-bottom: 25px;
+        }
+
+        .text-panel h1 span { color: var(--brand-ice-cyan); }
+
+        .narrative-flow-justified {
+            font-size: 21px;
+            line-height: 1.8;
+            color: #E2E8F0;
+            text-align: justify;
+            transition: color 0.3s ease;
+        }
+
+                .hero-image-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    outline: 2px solid rgba(0, 229, 255, 0.2);
+    outline-offset: 0px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* --- INGE KEEZHE ULLA RENDU LINES-AH MATTUM REPLCAE OR ADD PANNUNGA --- */
+    width: 100%;
+    max-width: 450px; /* Ella page-lum image-oda agalam (width) idhudhaan */
+    justify-self: center;
+}
+
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            transition: transform 0.5s ease;
+        }
+
+       
+
+        /* Image Container Hover Animation System */
+        .hero-image-container:hover {
+            transform: translateY(-5px);
+            outline: 3px solid var(--brand-ice-cyan);
+            outline-offset: 10px; /* Outward expansion on hover */
+            box-shadow: 0 25px 50px rgba(0, 229, 255, 0.15);
+        }
+
+        .hero-image-container:hover img {
+            transform: scale(1.03); /* Clean scale zoom */
+        }
+
+        /* --- COMPLIANCE MATRIX LIST GRID --- */
+        .spec-section {
+            padding: 60px 24px 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            flex-grow: 1;
+        }
+
+        .spec-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .spec-section h2 span { color: var(--brand-ice-cyan); }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .spec-card {
+            background: var(--card-glass-dark);
+            border-left: 5px solid var(--brand-ice-cyan);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-radius: 0 12px 12px 0;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .spec-card:hover {
+            transform: translateX(8px) translateY(-4px);
+            background: #1A2B47;
+            box-shadow: 0 15px 30px rgba(0, 229, 255, 0.15);
+        }
+
+        .spec-card-icon {
+            font-size: 22px;
+            color: var(--brand-ice-cyan);
+            background: rgba(0, 229, 255, 0.1);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .spec-card:hover .spec-card-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .spec-card-text {
+            font-size: 16.5px;
+            font-weight: 700;
+            color: #FFFFFF;
+            line-height: 1.5;
+        }
+
+        /* --- BRAND FOOTER SYSTEM --- */
+        footer {
+            background-color: var(--footer-dark-pure);
+            color: var(--text-light-muted);
+            padding: 60px 24px 0px 24px;
+            border-top: 4px solid var(--brand-ice-cyan);
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.2fr;
+            gap: 50px;
+            padding-bottom: 40px;
+        }
+
+        .footer-logo-wrapper img {
+            height: 55px;
+            background: #FFFFFF;
+            padding: 5px 12px;
+            border-radius: 6px;
+            width: auto;
+            display: inline-block;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-logo-wrapper img:hover {
+            transform: scale(1.03);
+        }
+
+        .footer-grid p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #A0AEC0;
+        }
+
+        .footer-section-title {
+            color: #FFFFFF;
+            font-size: 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--brand-ice-cyan);
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 8px; }
+        .footer-links ul li a {
+            color: #A0AEC0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease, padding-left: 0.2s ease;
+        }
+        .footer-links ul li a:hover { 
+            color: var(--brand-ice-cyan);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            max-width: 1300px;
+            margin: 0 auto;
+            border-top: 1px solid #1E293B;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #64748B;
+        }
+
+        @media (max-width: 900px) {
+            .content-wrapper { grid-template-columns: 1fr; gap: 30px; }
+            .spec-grid { grid-template-columns: 1fr; }
+            .hero-section { padding-top: 140px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" style="color: var(--brand-primary)">Services <span>▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="engineering_services.html">Engineering Services</a></li>
+                            <li><a href="services.html">Library Design Services</a></li>
+                            <li><a href="pcb_design_services.html">PCB Design Services</a></li>
+                            <li><a href="signal_integrity_services.html" style="color: var(--brand-primary)">Signal Integrity Services</a></li>
+                            <li><a href="embedded_services.html">Embedded Services</a></li>
+                            <li><a href="pcb_manufacturing_services.html">PCB Manufacturing & Assembly Support</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="content-wrapper">
+                <div class="text-panel">
+                    <h1>Signal Integrity <span>Services</span></h1>
+                    <div class="narrative-flow-justified">
+                        Providing comprehensive Pre-Layout and Post-Layout Signal Integrity simulations to identify reflection, crosstalk, and timing anomalies early in the design cycle. Our engineering methodologies ensure high-speed digital buses maintain absolute signal fidelity across critical impedance matching boundaries.
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <img src="Hero-signal-integrity.jpg" alt="Signal Integrity Services Validation Grid">
+                </div>
+            </div>
+        </section>
+
+        <section class="spec-section">
+            <h2>SIMULATION & <span>ANALYSIS CAPABILITIES</span></h2>
+            <div class="spec-grid">
+                <div class="spec-card">
+                    <div class="spec-card-icon">📉</div>
+                    <div class="spec-card-text">Pre & Post Layout Signal Integrity Analysis using IBIS Models</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-card-icon">📡</div>
+                    <div class="spec-card-text">Crosstalk Analysis & Mitigation Strategies for High-Speed Routing Density</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-card-icon">📏</div>
+                    <div class="spec-card-text">Impedance Profile Planning & Stackup Optimization Calculations</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-card-icon">👁️</div>
+                    <div class="spec-card-text">Eye Diagram Analysis & Total Jitter Margin Evaluation for High-Speed Interfaces</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-card-icon">⚡</div>
+                    <div class="spec-card-text">Power Integrity (PI) Analysis for DC Drop and PDN Impedance Prototyping</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo-wrapper">
+                    <img src="1781762786642_image.png" alt="iCAD Designs Footer Logo">
+                </div>
+                <p>Delivering high-performance electronics layout validation, signal integration architecture, and global industrial standard hardware processing.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-section-title">Explore Links</div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="engineering_services.html">Services</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>   
+            </div>
+            
+            <div>
+                <div class="footer-section-title">Corporate Office</div>
+                <p style="font-size: 16px; margin-top: 10px; line-height: 1.6;">
+                    📍 Door No 4/266, Thangavel Street, NGGO colony, Near TNEB Office, Coimbatore - 641022
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>© 2026 iCAD DESIGNS. All rights reserved.</div>
+            <div>vivek@icaddesigns.com</div>
+        </div>
+    </footer>
+
+</body>
+</html>

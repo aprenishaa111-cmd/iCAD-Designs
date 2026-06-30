@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEHFM431B3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-SEHFM431B3');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - iCAD DESIGNS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --page-bg-dark: #0B192C;       
+            --header-white: #FFFFFF;
+            --footer-dark-pure: #06101E;   
+            --text-dark-nav: #0B192C;      
+            --text-light-main: #FFFFFF;    
+            --text-light-muted: #E2E8F0;   
+            --brand-primary: #0052CC;      
+            --brand-ice-cyan: #00E5FF;     
+            --border-clean: #1E293B;
+            --card-bg: #112240;
+        }
+
+        body {
+            background-color: var(--page-bg-dark);
+            color: var(--text-light-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- FIXED NAVBAR --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--header-white);
+            border-bottom: 4px solid var(--brand-primary);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+        }
+
+        .logo-container img {
+            height: 75px;
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark-nav);
+            font-size: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 25px 4px;
+            display: block;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li a:hover { color: var(--brand-primary); }
+
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--header-white);
+            min-width: 320px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border-top: 4px solid var(--brand-primary);
+            border-radius: 0 0 8px 8px;
+            list-style: none;
+            padding: 12px 0;
+            z-index: 105;
+        }
+
+        .dropdown-menu li a {
+            padding: 14px 24px;
+            text-transform: none;
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text-dark-nav);
+            display: block;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #F1F5F9;
+            color: var(--brand-primary) !important;
+        }
+
+        .dropdown:hover .dropdown-menu { display: block !important; }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes cardReveal {
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* --- HERO FLOW --- */
+        .hero-section {
+            width: 100%;
+            padding-top: 180px;
+            flex-grow: 1;
+        }
+
+        .content-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 24px 80px 24px;
+        }
+
+        .about-layout-split {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            animation: fadeInUp 0.8s ease forwards;
+            margin-bottom: 120px;
+        }
+
+        .text-panel { flex: 1.1; }
+
+        .image-panel {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            flex: 0.9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-outline-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 540px;
+            padding: 40px;
+            background: rgba(0, 229, 255, 0.03);
+            border-radius: 20px;
+        }
+
+        .image-outline-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 2px solid rgba(0, 229, 255, 0.4);
+            border-radius: 24px;
+            z-index: 1;
+            clip-path: polygon(0 0, 30px 0, 45px 15px, calc(100% - 45px) 15px, calc(100% - 30px) 0, 100% 0, 100% 30px, calc(100% - 15px) 45px, calc(100% - 15px) calc(100% - 45px), 100% calc(100% - 30px), 100% 100%, calc(100% - 30px) 100%, calc(100% - 45px) calc(100% - 15px), 45px calc(100% - 15px), 30px 100%, 0 100%, 0 calc(100% - 30px), 15px calc(100% - 45px), 15px 45px, 0 30px);
+        }
+
+        .image-outline-wrapper img {
+            position: relative;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+            border: 2px solid var(--brand-ice-cyan);
+            display: block;
+            z-index: 2;
+            transition: 0.4s ease;
+        }
+
+        .image-outline-wrapper img:hover { transform: scale(1.03); }
+
+        .text-panel h1 {
+            font-size: 46px;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-left: 6px solid var(--brand-ice-cyan);
+            padding-left: 18px;
+            margin-bottom: 25px;
+        }
+
+        .text-panel h1 span { color: var(--brand-ice-cyan); }
+
+        .clean-narrative-text {
+            font-size: 21px; 
+            line-height: 1.8;
+            color: #FFFFFF; 
+            text-align: left !important;
+            word-spacing: normal !important;
+            letter-spacing: normal !important;
+            font-weight: 500; 
+        }
+
+        /* --- SERVICES & PRODUCTS SECTIONS --- */
+        .section-block {
+            margin-top: 100px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .section-title {
+            font-size: 44px;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: left;
+            margin-bottom: 25px;
+            letter-spacing: 1.5px;
+            border-left: 6px solid var(--brand-ice-cyan);
+            padding-left: 18px;
+        }
+
+        .section-title span { color: var(--brand-ice-cyan); }
+
+        .section-subtitle {
+            font-size: 21px; 
+            color: var(--text-light-muted);
+            text-align: left;
+            max-width: 950px;
+            margin: 0 0 55px 0;
+            padding-left: 24px;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .grid-container {
+            display: grid;
+            gap: 28px;
+            margin-bottom: 50px;
+        }
+
+        .services-grid { grid-template-columns: repeat(3, 1fr); }
+        
+        /* --- UPDATED: Reduced size for product boxes --- */
+        .products-grid { 
+            grid-template-columns: repeat(2, 1fr); 
+            max-width: 960px;
+            margin: 0 auto 50px auto;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-clean);
+            border-radius: 14px;
+            padding: 36px 28px;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            opacity: 0;
+        }
+
+        .section-block .card {
+            animation: cardReveal 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+        }
+        .services-grid .card:nth-child(1) { animation-delay: 0.1s; }
+        .services-grid .card:nth-child(2) { animation-delay: 0.2s; }
+        .services-grid .card:nth-child(3) { animation-delay: 0.3s; }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: linear-gradient(90deg, var(--brand-primary), var(--brand-ice-cyan));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-12px);
+            border-color: var(--brand-ice-cyan);
+            box-shadow: 0 16px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 229, 255, 0.2);
+        }
+
+        .card:hover::before { opacity: 1; }
+
+        .icon-box {
+            width: 56px; height: 56px;
+            background: rgba(0, 82, 204, 0.2);
+            border: 2px solid var(--brand-ice-cyan);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px;
+            color: var(--brand-ice-cyan);
+            font-size: 24px;
+        }
+
+        .card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        .card p {
+            font-size: 21px; 
+            line-height: 1.8;
+            color: #E2E8F0; 
+            font-weight: 500;
+            flex-grow: 1;
+            text-align: left !important;
+            word-spacing: normal !important;
+        }
+
+        .product-image-box {
+            width: 100%;
+            aspect-ratio: 10 / 7; 
+            background: transparent;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(0, 229, 255, 0.15);
+            display: block; 
+            overflow: hidden;
+            padding: 0;
+            transition: border-color 0.3s ease;
+        }
+
+        .product-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            margin: 0;
+            padding: 0;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .action-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--brand-primary) 0%, #0044b3 100%);
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 16px 40px;
+            font-size: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            border: 2px solid var(--brand-primary);
+            transition: all 0.3s ease;
+        }
+
+        .btn-action:hover {
+            background: transparent;
+            border-color: var(--brand-ice-cyan);
+            color: var(--brand-ice-cyan);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* --- INDUSTRIES SPLIT --- */
+        .industries-intro-split {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 60px;
+            padding-left: 18px;
+        }
+
+        .industries-text-block {
+            flex: 1.2; 
+            font-size: 21px; 
+            color: #FFFFFF;
+            line-height: 1.8;
+            font-weight: 500;
+            text-align: left ;
+            word-spacing: normal ;
+        }
+
+        .industries-image-block {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-clean);
+            border-radius: 14px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .industries-image-block img {
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .industries-image-block:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- INDUSTRIES GRID --- */
+        .industries-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .industry-card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-clean);
+            border-radius: 12px;
+            padding: 28px 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .industry-card:hover {
+            border-color: var(--brand-ice-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        .industry-icon {
+            font-size: 32px;
+            margin-bottom: 14px;
+        }
+        .industry-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+        }
+
+        /* --- BRAND FOOTER SYSTEM --- */
+        footer {
+            background-color: var(--footer-dark-pure);
+            color: #CBD5E1;
+            padding: 80px 24px 30px 24px;
+            border-top: 4px solid var(--brand-ice-cyan);
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr 1fr;
+            gap: 50px;
+        }
+
+        .footer-grid p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #A0AEC0;
+            text-align: left !important;
+            word-spacing: normal !important;
+        }
+
+        .footer-section-title {
+            font-size: 15px;
+            color: #FFFFFF;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section-title::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: -6px; width: 30px; height: 2px;
+            background-color: var(--brand-ice-cyan);
+        }
+
+        .footer-logo-box img {
+            height: 60px;
+            width: auto;
+            background: #FFFFFF;
+            padding: 5px 12px;
+            border-radius: 6px;
+            margin-bottom: 18px;
+        }
+
+        .footer-links-list {
+            list-style: none;
+        }
+
+        .footer-links-list li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links-list li a {
+            color: #A0AEC0;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links-list li a:hover {
+            color: var(--brand-ice-cyan);
+        }
+
+        .footer-base-bar {
+            max-width: 1200px;
+            margin: 50px auto 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-clean);
+            font-size: 14px;
+            color: #A0AEC0;
+        }
+
+        /* --- 🆕 GLOWING GLASS CALLOUT CARD (For Contact Us Text) --- */
+        .glowing-callout-box {
+            background: linear-gradient(135deg, rgba(17, 34, 64, 0.8) 0%, rgba(11, 25, 44, 0.9) 100%);
+            border-left: 5px solid var(--brand-ice-cyan);
+            border-top: 1px solid rgba(0, 229, 255, 0.1);
+            border-right: 1px solid rgba(0, 229, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+            padding: 30px 35px;
+            border-radius: 0 16px 16px 0;
+            max-width: 850px;
+            margin: 50px auto 25px auto;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .glowing-callout-box:hover {
+            transform: translateX(5px);
+            box-shadow: 0 15px 35px rgba(0, 229, 255, 0.1);
+            border-color: rgba(0, 229, 255, 0.3);
+            background: linear-gradient(135deg, rgba(21, 45, 80, 0.9) 0%, rgba(11, 25, 44, 0.95) 100%);
+        }
+
+        .glowing-callout-text {
+            font-size: 20px !important;
+            line-height: 1.8 !important;
+            color: #E2E8F0 !important;
+            font-weight: 500 !important;
+            text-align: left !important; /* 👈 டெக்ஸ்ட் Left-align உறுதி செய்யப்பட்டுள்ளது */
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .glowing-callout-text span {
+            color: var(--brand-ice-cyan);
+            font-weight: 700;
+        }
+
+        @media (max-width: 992px) {
+            .about-layout-split { flex-direction: column; gap: 40px; }
+            .industries-intro-split { flex-direction: column; gap: 30px; padding-left: 0; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .products-grid { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+            .industries-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .glowing-callout-box { margin: 40px 20px 25px 20px; }
+        }
+        @media (max-width: 576px) {
+            .products-grid { grid-template-columns: 1fr; }
+            .industries-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" style="color: var(--brand-primary)">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);">Services <span>▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="engineering_services.html">Engineering Services</a></li>
+                            <li><a href="services.html">Library Design Services</a></li>
+                            <li><a href="pcb_design_services.html">PCB Design Services</a></li>
+                            <li><a href="signal_integrity_services.html">Signal Integrity Services</a></li>
+                            <li><a href="embedded_services.html">Embedded Services</a></li>
+                            <li><a href="pcb_manufacturing_services.html">PCB Manufacturing & Assembly Support</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <main class="content-wrapper">
+            
+            <div class="about-layout-split">
+                <div class="text-panel">
+                    <h1>About <span>iCAD DESIGNS</span></h1>
+                    <div class="clean-narrative-text">
+                        <strong>iCAD DESIGNS</strong> provides global support services for the electronics industry. Guided by experts with <strong>15+ years of experience and IPC-CID Certification (USA)</strong>, our design team delivers premium quality, cost-effective hardware blueprints. We specialize in <strong>High-Speed PCB Design, Signal Integrity, and Embedded Services</strong> across key market sectors, including Semiconductor, Aerospace, Automotive, Medical, and Military industries. By collaborating closely with NPI engineering teams, we guarantee exceptional layout yields, fast turnarounds, and robust client relationships built on pure engineering perfection.
+                    </div>
+                </div>
+                <div class="image-panel">
+                    <div class="image-outline-wrapper">
+                        <img src="checking-current-laptop-circuit-board.png" alt="Engineering Team at Work">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-block">
+                <h2 class="section-title">Our Core <span>Services</span></h2>
+                <p class="section-subtitle">Explore our specialized capabilities delivering high-precision engineering models across global electronic industrial domains.</p>
+                
+                <div class="grid-container services-grid">
+                    <a href="pcb_design_services.html" class="card">
+                        <div class="icon-box">⚡</div>
+                        <h3>High-Speed PCB Design</h3>
+                        <p>Premium multi-layer hardware layouts engineered perfectly for complex differential signal paths.</p>
+                    </a>
+                    <a href="signal_integrity_services.html" class="card">
+                        <div class="icon-box">🔍</div>
+                        <h3>Signal Integrity</h3>
+                        <p>Advanced structural simulation and trace impedance analysis to ensure absolute accuracy.</p>
+                    </a>
+                    <a href="embedded_services.html" class="card">
+                        <div class="icon-box">⚙️</div>
+                        <h3>Embedded Services</h3>
+                        <p>Robust micro-controller processing firmware blueprints combined with scalable deployment.</p>
+                    </a>
+                </div>
+                
+                <div class="action-button-container">
+                    <a href="engineering_services.html" class="btn-view-all btn-action">View All Services <span>→</span></a>
+                </div>
+            </div>
+
+            <div class="section-block" style="margin-top: 80px;">
+                <h2 class="section-title">Industries <span>We Serve</span></h2>
+                
+                <div class="industries-intro-split">
+                    <div class="industries-text-block">
+                        Our expertise spans a diverse range of critical global sectors, delivering tailored solutions for high-performance fields like Telecom, Aerospace, RF, and ATE. We also provide robust, specialized engineering support for highly regulated and demanding markets, including Medical, Defence, Automobiles, and Consumer Electronics. By partnering across these distinct industries, we drive innovation and ensure precision excellence wherever advanced technology is required.
+                    </div>
+                    <div class="industries-image-block">
+                        <img src="pie_circle_only2.png" alt="Industrial Sectors Pie Chart">
+                    </div>
+                </div>
+            </div>
+                
+            <div class="section-block">
+                <h2 class="section-title">Our Featured <span>Products</span></h2>
+                <p class="section-subtitle">Browse our specialized technological systems designed to optimize high-performance electronic environments.</p>
+                
+                <div class="grid-container products-grid">
+                    <a href="products.html#product1" class="card">
+                        <div class="product-image-box">
+                            <img src="PentalogixInc-80071-Right-PCB-Materials-blogbanner1-845x500.png" alt="Industrial Evaluation Board Structure">
+                        </div>
+                        <div class="product-info">
+                            <h3>Industrial Evaluation Board</h3>
+                            <p>High-grade multi-layer testing matrix crafted for seamless system metrics extraction and prototyping.</p>
+                        </div>
+                    </a>
+                    <a href="products.html#product2" class="card">
+                        <div class="product-image-box">
+                            <img src="motherboard-background.png" alt="High-Speed Digital Emulator Component">
+                        </div>
+                        <div class="product-info">
+                            <h3>High-Speed Signal Emulator Module</h3>
+                            <p>Advanced structural calibration equipment engineered to deliver premium simulation and data accuracy.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="action-button-container">
+                    <a href="products.html" class="btn-action">View All Products <span>→</span></a>
+                </div>
+
+                <div class="glowing-callout-box">
+                    <p class="glowing-callout-text">
+                        💡 <span>Have a unique requirement or need customized hardware deployment models?</span> Let our expert engineering squad assist you with premium product architecture tailored specifically for your project workflows.
+                    </p>
+                </div>
+                
+                <div class="action-button-container" style="margin-top: 10px;">
+                    <a href="contact.html" class="btn-action">Contact Us <span>✉</span></a>
+                </div>
+            </div>
+
+        </main>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo-box">
+                    <img src="1781762786642_image.png" alt="iCAD DESIGNS">
+                </div>
+                <p>Delivering high-performance electronics layout validation, signal integration architecture, and global industrial standard hardware processing.</p>
+            </div>
+            <div>
+                <div class="footer-section-title">Explore Links</div>
+                <ul class="footer-links-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="engineering_services.html">Services</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-section-title">Corporate Office</div>
+                <p style="font-size: 16px; margin-top: 10px; line-height: 1.6; color: #E2E8F0; font-weight: 600;">
+                    📍 Door No 4/266, Thangavel Street, NGGO colony, Near TNEB Office, Coimbatore - 641022
+                </p>
+            </div>
+        </div>
+        <div class="footer-base-bar">
+            <div>© 2026 iCAD DESIGNS. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <div id="secret-admin-panel" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #1a1a1a; color: #ffffff; padding: 15px; border-radius: 10px; border: 2px solid #00adb5; box-shadow: 0px 4px 15px rgba(0,0,0,0.5); z-index: 9999; font-family: sans-serif; width: 220px;">
+        <h4 style="margin: 0 0 10px 0; color: #00adb5; font-size: 14px; border-bottom: 1px solid #333; padding-bottom: 5px;">📊 Admin Dashboard</h4>
+        <p style="margin: 5px 0; font-size: 13px; color: #bbb;">Total Page Visits:</p>
+        <h2 id="total-visits" style="margin: 0; color: #ff2e63; font-size: 24px; font-weight: bold;">Loading...</h2>
+    </div>
+
+</body>
+</html>
