@@ -85,6 +85,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 24px;
+            position: relative;
         }
 
         .logo-container img {
@@ -96,6 +97,19 @@
 
         .logo-container img:hover {
             transform: scale(1.05);
+        }
+
+        /* Hamburger Menu Controls (Hidden on Laptop/Desktop) */
+        .menu-toggle {
+            display: none;
+        }
+
+        .hamburger-label {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--text-dark-nav);
+            user-select: none;
         }
 
         nav ul {
@@ -393,7 +407,65 @@
             color: #94A3B8; /* High readability contrast for small metadata text */
         }
 
+        /* --- MEDIA QUERIES (RESPONSIVE CONFIG) --- */
         @media (max-width: 900px) {
+            /* Toggle Hamburger Visibility on Mobile */
+            .hamburger-label {
+                display: block;
+            }
+
+            /* Responsive Navigation Drawer Configuration */
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--header-white);
+                border-top: 2px solid #F1F5F9;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                align-items: stretch;
+                padding: 10px 0;
+            }
+
+            nav ul li a {
+                padding: 15px 24px;
+                border-bottom: 1px solid #F1F5F9;
+            }
+
+            /* Checkbox Checked -> Opens Menu Drawer */
+            .menu-toggle:checked ~ nav {
+                max-height: 500px;
+            }
+
+            /* Dropdown adjustments for Mobile stack views */
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border-top: none;
+                background: #F8FAFC;
+                padding: 0;
+                opacity: 1;
+                transform: none;
+                display: none;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: block !important;
+            }
+
+            .dropdown-menu li a {
+                padding-left: 40px;
+            }
+
+            /* Layout adjustments */
             .content-wrapper { grid-template-columns: 1fr; gap: 30px; }
             .spec-grid { grid-template-columns: 1fr; }
             .hero-section { padding-top: 140px; }
@@ -409,6 +481,10 @@
             <a href="index.html" class="logo-container">
                 <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
             </a>
+
+            <input type="checkbox" id="menu-checkbox" class="menu-toggle">
+            <label for="menu-checkbox" class="hamburger-label">&#9776;</label>
+
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>

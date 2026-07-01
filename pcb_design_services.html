@@ -162,6 +162,24 @@
             color: var(--brand-primary) !important;
         }
 
+        /* --- HAMBURGER MENU (HIDDEN ON PC) --- */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--text-dark-nav);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
         /* --- HERO AREA --- */
         .hero-section {
             padding: 200px 24px 60px 24px;
@@ -391,7 +409,62 @@
             color: #94A3B8;
         }
 
+        /* --- RESPONSIVE / MOBILE VIEW (MAX-WIDTH: 900px) --- */
         @media (max-width: 900px) {
+            .hamburger-btn {
+                display: block; /* மொபைலில் மட்டும் காட்டும் */
+            }
+
+            nav {
+                display: none; /* ஆரம்பத்தில் மெனுவை மறைக்கும் */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--header-white);
+                border-top: 2px solid var(--brand-primary);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            /* JS மூலமாக active வகுப்பு சேரும் போது மெனு தெரியும் */
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 10px 0;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul li a {
+                padding: 15px 24px;
+                border-bottom: 1px solid #F1F5F9;
+            }
+
+            /* மொபைலில் Dropdown அமைப்பை எளிமையாக்குதல் */
+            .dropdown-menu {
+                position: relative;
+                box-shadow: none;
+                border-top: none;
+                padding: 0;
+                background-color: #F8FAFC;
+                transform: none;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: block !important;
+            }
+
+            .dropdown-menu li a {
+                padding-left: 40px;
+            }
+
+            /* மத்த மொபைல் மாற்றங்கள் */
             .content-wrapper { grid-template-columns: 1fr; gap: 30px; }
             .spec-grid { grid-template-columns: 1fr; }
             .hero-section { padding-top: 140px; }
@@ -407,7 +480,14 @@
             <a href="index.html" class="logo-container">
                 <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
             </a>
-            <nav>
+            
+            <button class="hamburger-btn" id="hamburger-toggle" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav id="nav-menu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="company.html">Company</a></li>
@@ -531,6 +611,15 @@
             <div>vivek@icaddesigns.com</div>
         </div>
     </footer>
+
+    <script>
+        const hamburgerToggle = document.getElementById('hamburger-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburgerToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>

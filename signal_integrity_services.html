@@ -392,6 +392,12 @@
         }
 
         @media (max-width: 900px) {
+            .nav-container {
+                justify-content: center; /* Centers the logo on mobile screens */
+            }
+            nav {
+                display: none !important; /* Removes the top navigation list entirely on mobile layout */
+            }
             .content-wrapper { grid-template-columns: 1fr; gap: 30px; }
             .spec-grid { grid-template-columns: 1fr; }
             .hero-section { padding-top: 140px; }

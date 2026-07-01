@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEHFM431B3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SEHFM431B3');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SEHFM431B3');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Profile - iCAD DESIGNS</title>
@@ -65,6 +64,7 @@
             padding: 12px 24px;
         }
 
+        /* --- IMAGE LOGO BRANDING --- */
         .logo-container img {
             height: 75px;
             width: auto;
@@ -124,13 +124,24 @@
 
         .dropdown:hover .dropdown-menu { display: block; }
 
+        /* --- HAMBURGER MENU SYMBOL (HIDDEN ON LAPTOP) --- */
+        .hamburger-btn {
+            display: none;
+            font-size: 32px;
+            background: none;
+            border: none;
+            color: var(--text-dark-nav);
+            cursor: pointer;
+            padding: 10px;
+        }
+
         /* --- HERO AREA ADJUSTMENT --- */
         .hero-section {
             padding: 180px 24px 60px 24px;
             display: flex;
             justify-content: center;
             position: relative;
-            background-image: linear-gradient(to right, rgba(11, 25, 44, 0.96) 50%, rgba(11, 25, 44, 0.7) 100%), url('1781762835359_image.png');
+            background-image: linear-gradient(to right, rgba(11, 25, 44, 0.96) 50%, rgba(11, 25, 44, 0.7) 100%), url('images.jpg');
             background-size: cover;
             background-position: center;
             border-bottom: 1px solid var(--border-clean);
@@ -372,7 +383,11 @@
             margin-bottom: 20px;
         }
 
-        .footer-logo-wrapper img { height: 55px; width: auto; }
+        .footer-logo-wrapper img { 
+            height: 55px; 
+            width: auto; 
+            display: block;
+        }
 
         .footer-section-title {
             color: #FFFFFF;
@@ -420,34 +435,32 @@
             font-size: 14px;
         }
 
-        /* 📱 --- MOBILE AUTOMATIC VIEW REPAIR MATRIX --- */
+        /* 📱 --- MOBILE AUTOMATIC VIEW (992px & UNDER) --- */
         @media (max-width: 992px) {
             header {
-                position: relative;
+                position: fixed;
             }
             .nav-container {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
             }
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px 18px;
+            
+            /* --- REMOVED TOP NAV LINKS & DROPDOWN ON PHONE --- */
+            nav {
+                display: none;
             }
-            nav ul li a {
-                padding: 10px 4px;
-                font-size: 14px;
+
+            /* --- SHOWS HAMBURGER SYMBOL NEAR LOGO IMAGE --- */
+            .hamburger-btn {
+                display: block; 
             }
-            .dropdown-menu {
-                position: static;
-                min-width: 100%;
-                box-shadow: none;
-            }
+
             .hero-section {
                 background-image: none;
                 background-color: var(--page-bg-dark);
-                padding-top: 30px;
+                padding-top: 140px;
             }
             .content-wrapper {
                 grid-template-columns: 1fr;
@@ -491,11 +504,8 @@
         }
 
         @media (max-width: 480px) {
-            nav ul {
-                gap: 8px 12px;
-            }
-            nav ul li a {
-                font-size: 12px;
+            .logo-container img {
+                height: 55px;
             }
             .graphic-panel {
                 height: 250px;
@@ -510,6 +520,7 @@
             <a href="index.html" class="logo-container">
                 <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
             </a>
+            
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -529,6 +540,8 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
+
+            <button class="hamburger-btn" aria-label="Menu Toggle">☰</button>
         </div>
     </header>
 

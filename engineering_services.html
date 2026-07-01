@@ -391,13 +391,19 @@
                 padding: 10px 0;
             }
 
+            /* Hides dropdown completely or displays gracefully inside menu list on mobile */
             .dropdown-menu {
                 position: static;
                 box-shadow: none;
                 border-top: none;
                 padding-left: 15px;
                 background: #F8FAFC;
-                display: block; /* Mobile view-la static menu clear-ah theriyum */
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-menu,
+            .dropdown:hover .dropdown-menu {
+                display: block;
             }
 
             .top-landscape-banner { 
@@ -448,7 +454,7 @@
                 <ul id="nav-list">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="company.html">Company</a></li>
-                    <li class="dropdown">
+                    <li class="dropdown" id="services-dropdown">
                         <a href="engineering_services.html" style="color: var(--brand-primary)">Services ▼</a>
                         <ul class="dropdown-menu">
                             <li><a href="engineering_services.html">Engineering Services</a></li>
@@ -528,9 +534,19 @@
     <script>
         const menuBtn = document.getElementById('mobile-menu-btn');
         const navList = document.getElementById('nav-list');
+        const dropdown = document.getElementById('services-dropdown');
 
         menuBtn.addEventListener('click', () => {
             navList.classList.toggle('active');
+        });
+
+        // Mobile dropdown click interaction toggle
+        dropdown.addEventListener('click', (e) => {
+            if (window.innerWidth <= 950) {
+                // Allows navigation link fallback or dropdown toggle
+                e.stopPropagation();
+                dropdown.classList.toggle('active');
+            }
         });
     </script>
 </body>

@@ -121,6 +121,27 @@
             color: var(--brand-primary);
         }
 
+        /* HAMBURGER TRIGGER BUTTON (HIDDEN ON DESKTOP) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1010;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--text-dark-nav);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
         /* DROPDOWN SYSTEM */
         .dropdown { position: relative; }
         .dropdown-menu {
@@ -393,12 +414,74 @@
             color: #94A3B8;
         }
 
+        /* --- MOBILE VIEW ENHANCEMENTS (< 900px) --- */
         @media (max-width: 900px) {
             .content-wrapper { grid-template-columns: 1fr; gap: 30px; }
             .spec-grid { grid-template-columns: 1fr; }
             .hero-section { padding-top: 140px; }
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
             .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+
+            /* Mobile Responsive Navbar Adjustments */
+            .menu-toggle {
+                display: flex; /* Shows hamburger button on mobile */
+            }
+
+            nav ul {
+                display: none; /* Hide default link layout */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--header-white);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+                border-bottom: 4px solid var(--brand-primary);
+                padding: 10px 0;
+                gap: 0;
+            }
+
+            /* Active class attached dynamically via JavaScript toggle */
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul li a {
+                padding: 15px 24px;
+                border-bottom: 1px solid #F1F5F9;
+            }
+
+            /* Mobile Dropdown Adjustments */
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                border-top: none;
+                border-left: 3px solid var(--brand-primary);
+                background-color: #F8FAFC;
+                padding: 0;
+                transform: none;
+                transition: none;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: block !important;
+            }
+
+            /* Hamburger animation states when clicked */
+            .menu-toggle.open span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .menu-toggle.open span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.open span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
         }
     </style>
 </head>
@@ -409,8 +492,15 @@
             <a href="index.html" class="logo-container">
                 <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
             </a>
+            
+            <button class="menu-toggle" id="mobile-menu-trigger" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <nav>
-                <ul>
+                <ul id="nav-links-wrapper">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="company.html">Company</a></li>
                     <li class="dropdown">
@@ -511,5 +601,22 @@
         </div>
     </footer>
 
+    <script>
+        const menuTrigger = document.getElementById('mobile-menu-trigger');
+        const navLinks = document.getElementById('nav-links-wrapper');
+
+        menuTrigger.addEventListener('click', () => {
+            menuTrigger.classList.toggle('open');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu if user clicks anywhere outside the nav panel area on mobile screen
+        document.addEventListener('click', (e) => {
+            if (!menuTrigger.contains(e.target) && !navLinks.contains(e.target)) {
+                menuTrigger.classList.remove('open');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>

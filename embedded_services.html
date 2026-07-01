@@ -87,6 +87,29 @@
             padding: 12px 24px;
         }
 
+        /* Mobile Hamburger Button - Hidden on Desktop by default */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .hamburger-btn:hover {
+            background-color: #F1F5F9;
+        }
+
+        .hamburger-btn svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--text-dark-nav);
+        }
+
         .logo-container img {
             height: 75px;
             width: auto;
@@ -160,6 +183,97 @@
         .dropdown-menu li a:hover {
             background-color: #F1F5F9;
             color: var(--brand-primary) !important;
+        }
+
+        /* --- MOBILE SIDEBAR DRAWER --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 320px;
+            height: 100vh;
+            background: var(--header-white);
+            box-shadow: 5px 0 30px rgba(0,0,0,0.5);
+            z-index: 2000;
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 30px 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-close-btn {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-close-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: var(--text-dark-nav);
+        }
+
+        .sidebar ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: var(--text-dark-nav);
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 10px 0;
+            display: block;
+            border-bottom: 1px solid #E2E8F0;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            color: var(--brand-primary);
+            padding-left: 6px;
+        }
+
+        .sidebar .submenu {
+            list-style: none;
+            padding-left: 15px;
+            margin-top: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .sidebar .submenu li a {
+            font-size: 14px;
+            text-transform: none;
+            border-bottom: none;
+            padding: 6px 0;
+            color: #475569;
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1999;
+            display: none;
+        }
+
+        .sidebar-overlay.active {
+            display: block;
         }
 
         /* --- HERO AREA --- */
@@ -241,7 +355,7 @@
             transform: scale(1.03);
         }
 
-        /* --- COMPLIANCE MATRIX LIST GRID --- */
+        /* --- CAPABILITIES SECTION --- */
         .spec-section {
             padding: 60px 24px 100px 24px;
             max-width: 1200px;
@@ -319,7 +433,7 @@
             line-height: 1.5;
         }
 
-        /* --- BRAND FOOTER SYSTEM --- */
+        /* --- FOOTER --- */
         footer {
             background-color: var(--footer-dark-pure);
             color: var(--text-light-muted);
@@ -376,7 +490,7 @@
             color: #CBD5E1;
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.2s ease, padding-left: 0.2s ease;
+            transition: color 0.2s ease, padding-left 0.2s ease;
         }
         .footer-links ul li a:hover { 
             color: var(--brand-ice-cyan);
@@ -395,10 +509,37 @@
             color: #94A3B8;
         }
 
-        @media (max-width: 900px) {
-            .content-wrapper { grid-template-columns: 1fr; gap: 30px; }
+        /* --- RESPONSIVE MEDIA QUERIES (BREAKPOINT) --- */
+        @media (max-width: 992px) {
+            /* Desktop links completely hidden */
+            header nav {
+                display: none !important;
+            }
+
+            /* Containers rearrange horizontally to keep hamburger and logo aligned */
+            .nav-container {
+                justify-content: space-between;
+                flex-direction: row-reverse; /* Put Hamburger on right, logo on left side */
+                padding: 10px 16px;
+            }
+
+            /* Display hamburger right inside viewport */
+            .hamburger-btn {
+                display: flex !important; 
+            }
+
+            .logo-container img {
+                height: 52px; 
+            }
+
+            /* Main Content Adjustments */
+            .content-wrapper { grid-template-columns: 1fr; gap: 35px; }
             .spec-grid { grid-template-columns: 1fr; }
             .hero-section { padding-top: 140px; }
+            .text-panel h1 { font-size: 34px; }
+            .narrative-flow-left { font-size: 18px; }
+            
+            /* Footer Adjustments */
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
             .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
         }
@@ -408,9 +549,16 @@
 
     <header>
         <div class="nav-container">
+            <button class="hamburger-btn" onclick="toggleSidebar()" aria-label="Open Navigation">
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </button>
+
             <a href="index.html" class="logo-container">
                 <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
             </a>
+
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -432,6 +580,35 @@
             </nav>
         </div>
     </header>
+
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    
+    <div class="sidebar" id="sidebarMenu">
+        <button class="sidebar-close-btn" onclick="toggleSidebar()" aria-label="Close Navigation">
+            <svg viewBox="0 0 24 24">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+            </svg>
+        </button>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="company.html">Company</a></li>
+                <li>
+                    <a href="engineering_services.html" style="color: var(--brand-primary)">Services</a>
+                    <ul class="submenu">
+                        <li><a href="engineering_services.html">Engineering Services</a></li>
+                        <li><a href="services.html">Library Design Services</a></li>
+                        <li><a href="pcb_design_services.html">PCB Design Services</a></li>
+                        <li><a href="signal_integrity_services.html">Signal Integrity Services</a></li>
+                        <li><a href="embedded_services.html" style="color: var(--brand-primary)">Embedded Services</a></li>
+                        <li><a href="pcb_manufacturing_services.html">PCB Manufacturing Support</a></li>
+                    </ul>
+                </li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <main>
         <section class="hero-section">
@@ -525,5 +702,14 @@
         </div>
     </footer>
 
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebarMenu');
+            const overlay = document.getElementById('sidebarOverlay');
+            
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

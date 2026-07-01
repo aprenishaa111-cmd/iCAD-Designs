@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SEHFM431B3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SEHFM431B3');
-</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SEHFM431B3');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - iCAD DESIGNS</title>
@@ -62,12 +61,26 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 24px;
+            position: relative;
         }
 
         .logo-container img {
             height: 75px;
             width: auto;
             display: block;
+        }
+
+        /* Hamburger Menu Controls (Hidden on Desktop) */
+        .menu-toggle {
+            display: none;
+        }
+
+        .hamburger-label {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--text-dark-nav);
+            user-select: none;
         }
 
         nav ul {
@@ -424,7 +437,65 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
+        /* --- MEDIA QUERIES (RESPONSIVE CONFIG) --- */
         @media (max-width: 900px) {
+            /* Toggle Hamburger Visibility */
+            .hamburger-label {
+                display: block;
+            }
+
+            /* Responsive Navigation Drawer Configuration */
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--header-white);
+                border-top: 2px solid #F1F5F9;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                align-items: stretch;
+                padding: 10px 0;
+            }
+
+            nav ul li a {
+                padding: 15px 24px;
+                border-bottom: 1px solid #F1F5F9;
+            }
+
+            /* Checkbox Checked -> Opens Menu Drawer */
+            .menu-toggle:checked ~ nav {
+                max-height: 500px; /* Adjust if needed based on link counts */
+            }
+
+            /* Dropdown adjustments for Mobile stack views */
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border-top: none;
+                background: #F8FAFC;
+                padding: 0;
+                opacity: 1;
+                transform: none;
+                display: none;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
+
+            .dropdown-menu li a {
+                padding-left: 40px;
+            }
+
+            /* Main Layout Adjustments */
             .product-container { grid-template-columns: 1fr; gap: 40px; }
             .product-media-panel { position: static; }
             .hero-section { padding-top: 140px; }
@@ -442,6 +513,10 @@
             <a href="index.html" class="logo-container">
                 <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
             </a>
+
+            <input type="checkbox" id="menu-checkbox" class="menu-toggle">
+            <label for="menu-checkbox" class="hamburger-label">&#9776;</label>
+
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>

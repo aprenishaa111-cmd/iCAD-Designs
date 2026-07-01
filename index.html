@@ -64,12 +64,35 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 24px;
+            position: relative;
         }
 
         .logo-container img {
             height: 75px;
             width: auto;
             display: block;
+        }
+
+        /* Hamburger Menu Icon (Hidden on Laptop) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1010;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-dark-nav);
+            border-radius: 3px;
+            transition: all 0.3s ease;
         }
 
         nav ul {
@@ -580,35 +603,98 @@
             font-weight: 700;
         }
 
-        /* 📱 --- DYNAMIC RESPONSIVE BREAKPOINTS (LAPTOP VIEWS STAY SAME, MOBILE AUTO-FIXES) --- */
+        /* 📱 --- DYNAMIC RESPONSIVE BREAKPOINTS --- */
         @media (max-width: 992px) {
             header {
-                position: relative; /* Fixed position is turned off for smaller phone screens */
+                position: fixed; /* Laptop madhiriye fixed header design */
             }
             .nav-container {
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px;
+                flex-direction: row; /* Logo and hamburger single horizontal row line */
+                justify-content: space-between;
+                padding: 12px 24px;
             }
+            
+            /* Show Hamburger on mobile screen views */
+            .menu-toggle {
+                display: flex;
+            }
+
+            /* Hamburger animation toggles when active */
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            /* Responsive Mobile Menu Dropdown Panel Navigation */
+            nav {
+                display: none; /* Initially Hidden */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--header-white);
+                border-bottom: 4px solid var(--brand-primary);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+                padding: 20px 0;
+            }
+
+            /* Display block when toggle is clicked via script */
+            nav.active {
+                display: block;
+            }
+
             nav ul {
-                flex-wrap: wrap; 
-                justify-content: center;
-                gap: 15px 20px;
+                flex-direction: column;
+                gap: 0;
+                align-items: stretch;
+                width: 100%;
             }
+
+            nav ul li {
+                width: 100%;
+            }
+
             nav ul li a {
-                padding: 10px 5px;
+                padding: 15px 30px;
+                font-size: 16px;
+                border-bottom: 1px solid #f0f4f8;
             }
+
+            /* Mobile Dropdown Styling for Services */
             .dropdown-menu {
                 position: static; 
                 min-width: 100%;
                 box-shadow: none;
+                background-color: #F8FAFC;
+                border-top: none;
+                border-radius: 0;
+                padding: 0;
+                display: none; /* Hidden until clicked or hovered */
             }
+
+            /* Click configuration alternative for mobile sublinks view */
+            .dropdown.active .dropdown-menu {
+                display: block !important;
+            }
+
+            .dropdown-menu li a {
+                padding: 12px 45px;
+                font-size: 14px;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
             .hero-section {
-                padding-top: 40px; 
+                padding-top: 140px; /* Space adjustment for mobile view */
             }
             .about-layout-split { 
                 flex-direction: column; 
                 gap: 40px; 
+                margin-bottom: 60px;
             }
             .image-outline-wrapper {
                 padding: 15px;
@@ -626,7 +712,7 @@
                 padding-left: 0; 
             }
             .services-grid { 
-                grid-template-columns: 1fr !important; /* Single column format on smart devices */
+                grid-template-columns: 1fr !important; 
             }
             .products-grid { 
                 grid-template-columns: 1fr !important; 
@@ -646,12 +732,6 @@
         }
 
         @media (max-width: 480px) {
-            nav ul {
-                gap: 10px 15px;
-            }
-            nav ul li a {
-                font-size: 13px;
-            }
             .industries-grid { 
                 grid-template-columns: 1fr !important; 
             }
@@ -668,12 +748,19 @@
             <a href="index.html" class="logo-container">
                 <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
             </a>
-            <nav>
+            
+            <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav id="navbar-links">
                 <ul>
                     <li><a href="index.html" style="color: var(--brand-primary)">Home</a></li>
                     <li><a href="company.html">Company</a></li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0);">Services <span>▼</span></a>
+                    <li class="dropdown" id="services-dropdown">
+                        <a href="javascript:void(0);" id="services-trigger">Services <span style="font-size: 11px; margin-left: 4px;">▼</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="engineering_services.html">Engineering Services</a></li>
                             <li><a href="services.html">Library Design Services</a></li>
@@ -825,5 +912,34 @@
         <h2 id="total-visits" style="margin: 0; color: #ff2e63; font-size: 24px; font-weight: bold;">Loading...</h2>
     </div>
 
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.getElementById('navbar-links');
+        const servicesTrigger = document.getElementById('services-trigger');
+        const servicesDropdown = document.getElementById('services-dropdown');
+
+        // Toggle Hamburger Menu Open/Close Panel
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Mobile Screen: Manage Services Dropdown click action toggle link layout
+        servicesTrigger.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992) {
+                e.preventDefault(); // Stop raw tracking link href execution on smartphones
+                servicesDropdown.classList.toggle('active');
+            }
+        });
+
+        // Close dashboard dropdown action on outside desktop touch events automatically
+        window.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+                menuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                servicesDropdown.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
