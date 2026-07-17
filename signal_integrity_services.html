@@ -162,6 +162,23 @@
             color: var(--brand-primary) !important;
         }
 
+        /* Mobile Burger Button Style */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .mobile-menu-btn svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--text-dark-nav);
+            stroke-width: 2.5;
+            stroke-linecap: round;
+        }
+
         /* --- HERO AREA --- */
         .hero-section {
             padding: 200px 24px 60px 24px;
@@ -393,10 +410,44 @@
 
         @media (max-width: 900px) {
             .nav-container {
-                justify-content: center; /* Centers the logo on mobile screens */
+                justify-content: space-between; /* Ensures Logo on left, Burger on right */
+            }
+            .mobile-menu-btn {
+                display: block; /* Shows burger menu icon on mobile layout */
             }
             nav {
-                display: none !important; /* Removes the top navigation list entirely on mobile layout */
+                display: none; 
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--header-white);
+                border-bottom: 4px solid var(--brand-primary);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                padding: 10px 24px;
+            }
+            nav.active {
+                display: block !important; /* Toggles responsive visibility open via script */
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                align-items: flex-start;
+            }
+            nav ul li {
+                width: 100%;
+            }
+            nav ul li a {
+                padding: 15px 0;
+                border-bottom: 1px solid #F1F5F9;
+            }
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border-top: none;
+                padding-left: 15px;
+                display: block; /* Viewable within the responsive dynamic mobile display */
+                transform: none;
             }
             .content-wrapper { grid-template-columns: 1fr; gap: 30px; }
             .spec-grid { grid-template-columns: 1fr; }
@@ -413,7 +464,17 @@
             <a href="index.html" class="logo-container">
                 <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
             </a>
-            <nav>
+            
+            <!-- Added Mobile Burger Button Toggle Trigger Element -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="20" y2="18"></line>
+                </svg>
+            </button>
+
+            <nav id="navMenu">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="company.html">Company</a></li>
@@ -520,5 +581,14 @@
         </div>
     </footer>
 
+    <!-- Added minimal JavaScript code to toggle menu when burger symbol is clicked -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
