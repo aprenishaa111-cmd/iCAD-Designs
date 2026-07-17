@@ -87,7 +87,7 @@
             padding: 12px 24px;
         }
 
-        /* Mobile Hamburger Button - Hidden on Desktop by default */
+        /* Mobile Hamburger Button */
         .hamburger-btn {
             display: none;
             background: none;
@@ -199,6 +199,7 @@
             padding: 30px 24px;
             display: flex;
             flex-direction: column;
+            overflow-y: auto;
         }
 
         .sidebar.active {
@@ -241,16 +242,20 @@
 
         .sidebar ul li a:hover {
             color: var(--brand-primary);
-            padding-left: 6px;
         }
 
+        /* Sidebar Dropdown Menu Setup */
         .sidebar .submenu {
             list-style: none;
             padding-left: 15px;
             margin-top: 5px;
-            display: flex;
+            display: none; /* Initially hidden */
             flex-direction: column;
             gap: 6px;
+        }
+
+        .sidebar .submenu.open {
+            display: flex !important;
         }
 
         .sidebar .submenu li a {
@@ -259,6 +264,13 @@
             border-bottom: none;
             padding: 6px 0;
             color: #475569;
+        }
+
+        .sidebar .has-dropdown > a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
         }
 
         .sidebar-overlay {
@@ -511,19 +523,16 @@
 
         /* --- RESPONSIVE MEDIA QUERIES (BREAKPOINT) --- */
         @media (max-width: 992px) {
-            /* Desktop links completely hidden */
             header nav {
                 display: none !important;
             }
 
-            /* Containers rearrange horizontally to keep hamburger and logo aligned */
             .nav-container {
                 justify-content: space-between;
-                flex-direction: row-reverse; /* Put Hamburger on right, logo on left side */
+                flex-direction: row-reverse; 
                 padding: 10px 16px;
             }
 
-            /* Display hamburger right inside viewport */
             .hamburger-btn {
                 display: flex !important; 
             }
@@ -532,14 +541,12 @@
                 height: 52px; 
             }
 
-            /* Main Content Adjustments */
             .content-wrapper { grid-template-columns: 1fr; gap: 35px; }
             .spec-grid { grid-template-columns: 1fr; }
             .hero-section { padding-top: 140px; }
             .text-panel h1 { font-size: 34px; }
             .narrative-flow-left { font-size: 18px; }
             
-            /* Footer Adjustments */
             .footer-grid { grid-template-columns: 1fr; gap: 30px; }
             .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
         }
@@ -593,9 +600,9 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="company.html">Company</a></li>
-                <li>
-                    <a href="engineering_services.html" style="color: var(--brand-primary)">Services</a>
-                    <ul class="submenu">
+                <li class="has-dropdown">
+                    <a onclick="toggleMobileDropdown(event)" style="color: var(--brand-primary)">Services <span id="caret-icon">▼</span></a>
+                    <ul class="submenu" id="mobileSubmenu">
                         <li><a href="engineering_services.html">Engineering Services</a></li>
                         <li><a href="services.html">Library Design Services</a></li>
                         <li><a href="pcb_design_services.html">PCB Design Services</a></li>
@@ -655,7 +662,7 @@
                 </div>
                 <div class="spec-card">
                     <div class="spec-card-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zm0 5a5 5 0 0 0-5 5c0 2.76 2.24 5 5 5s5-2.24 5-5a5 5 0 0 0-5-5z"></path></svg>
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
                     </div>
                     <div class="spec-card-text">Provides system-level customized manufacturing solutions.</div>
                 </div>
@@ -709,6 +716,20 @@
             
             sidebar.classList.toggle('active');
             overlay.classList.toggle('active');
+        }
+
+        function toggleMobileDropdown(event) {
+            event.preventDefault(); // Direct redirection block panum
+            const submenu = document.getElementById('mobileSubmenu');
+            const caret = document.getElementById('caret-icon');
+            
+            submenu.classList.toggle('open');
+            
+            if (submenu.classList.contains('open')) {
+                caret.textContent = '▲';
+            } else {
+                caret.textContent = '▼';
+            }
         }
     </script>
 </body>
