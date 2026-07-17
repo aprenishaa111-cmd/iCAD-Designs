@@ -62,6 +62,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 24px;
+            position: relative;
         }
 
         /* --- IMAGE LOGO BRANDING --- */
@@ -447,9 +448,55 @@
                 padding: 10px 20px;
             }
             
-            /* --- REMOVED TOP NAV LINKS & DROPDOWN ON PHONE --- */
+            /* --- MODIFIED MOBILE NAV DRAWER --- */
             nav {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--header-white);
+                border-bottom: 4px solid var(--brand-primary);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                align-items: flex-start;
+                padding: 10px 0;
+            }
+
+            nav ul li {
+                width: 100%;
+            }
+
+            nav ul li a {
+                padding: 15px 20px;
+                width: 100%;
+                border-bottom: 1px solid #F1F5F9;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                display: block;
+                position: static;
+                box-shadow: none;
+                border-top: none;
+                background-color: #F8FAFC;
+                padding: 0;
+                width: 100%;
+            }
+
+            .dropdown.active .dropdown-menu li a {
+                padding-left: 40px;
             }
 
             /* --- SHOWS HAMBURGER SYMBOL NEAR LOGO IMAGE --- */
@@ -521,12 +568,12 @@
                 <img src="1781762786642_image.png" alt="iCAD DESIGNS Logo">
             </a>
             
-            <nav>
+            <nav id="mobileNav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="company.html" style="color: var(--brand-primary);">Company</a></li>
                     <li class="dropdown">
-                        <a href="#">Services <span>▼</span></a>
+                        <a href="#" id="servicesDropdown">Services <span>▼</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="engineering_services.html">Engineering Services</a></li>
                             <li><a href="services.html">Library Design Services</a></li>
@@ -541,7 +588,7 @@
                 </ul>
             </nav>
 
-            <button class="hamburger-btn" aria-label="Menu Toggle">☰</button>
+            <button class="hamburger-btn" id="menuToggle" aria-label="Menu Toggle">☰</button>
         </div>
     </header>
 
@@ -647,5 +694,22 @@
         </div>
     </footer>
 
+    <!-- JS TO OPEN AND CLOSE MOBILE MENU -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const servicesDropdown = document.getElementById('servicesDropdown');
+
+        menuToggle.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+        });
+
+        servicesDropdown.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992) {
+                e.preventDefault();
+                servicesDropdown.parentElement.classList.toggle('active');
+            }
+        });
+    </script>
 </body>
 </html>
